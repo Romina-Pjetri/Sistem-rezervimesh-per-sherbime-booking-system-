@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard | Glow & Relax</title>
+    <meta name="description" content="Your personal wellness dashboard — browse services, book appointments, and manage your reservations at Glow & Relax.">
+   <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Route Protection: redirect if not logged in -->
+    <script>
+        (function () {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (!currentUser) {
+                window.location.href = 'login.html';
+            }
+        })();
+    </script>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">Glow & Relax</div>
+        <ul class="nav-links">
+            <li><a href="#user-services">Services</a></li>
+            <li><a href="produkte.html">Products</a></li>
+            <li><a href="#user-gallery">Gallery</a></li>
+            <li><span id="welcomeUser" class="welcome-text"></span></li>
+            <li><a href="#" onclick="logout()" class="login-btn" style="background:#e74c3c !important; box-shadow: 0 2px 12px rgba(231,76,60,0.3);">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="dashboard-content">
+        <header class="dash-header">
+            <h1>Welcome, Beauty Enthusiast!</h1>
+            <p>Select a service below to book your next appointment.</p>
+        </header>
+
+        <!-- Services Section -->
+        <section id="user-services">
+            <h2 class="section-title" style="text-align: left; margin-bottom: 8px;">Our Services & Pricing</h2>
+            <p class="section-subtitle" style="text-align: left; margin-bottom: 30px;">Click "Book Now" to choose a treatment and reserve your slot</p>
+            <div class="services-grid" id="userServicesGrid">
+                <!-- Dynamically rendered by main.js -->
+            </div>
+        </section>
+
+        <!-- My Bookings Section -->
+        <section class="my-bookings-section" id="my-bookings">
+            <h2 class="section-title" style="text-align: left; margin-bottom: 8px;">My Bookings</h2>
+            <p class="section-subtitle" style="text-align: left; margin-bottom: 24px;">Your upcoming appointments</p>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Category</th>
+                            <th>Treatment</th>
+                            <th>Date & Time</th>
+                            <th>Price</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="userBookingsBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Photo Gallery Section -->
+        <section class="user-gallery-section" id="user-gallery">
+            <h2 class="section-title" style="text-align: left; margin-bottom: 8px;">Gallery</h2>
+            <p class="section-subtitle" style="text-align: left; margin-bottom: 24px;">A glimpse into our sanctuary</p>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="../images/gallery-1.png" alt="Spa stones and candles">
+                    <div class="gallery-overlay"><p>Relaxation Space</p></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="../images/gallery-2.png" alt="Facial treatment">
+                    <div class="gallery-overlay"><p>Facial Treatments</p></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="../images/gallery-3.png" alt="Nail art service">
+                    <div class="gallery-overlay"><p>Nail Art Studio</p></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="../images/gallery-4.png" alt="Hair styling">
+                    <div class="gallery-overlay"><p>Hair Styling</p></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="../images/gallery-5.png" alt="Massage room">
+                    <div class="gallery-overlay"><p>Massage Rooms</p></div>
+                </div>
+                <div class="gallery-item">
+                    <img src="../images/gallery-6.png" alt="Spa products">
+                    <div class="gallery-overlay"><p>Premium Products</p></div>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Booking Form Modal (with sub-service dropdown + dynamic price) -->
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeBooking()">&times;</span>
+            <div class="modal-icon">📅</div>
+            <h2 id="modalTitle" style="font-family: var(--font-heading); margin-bottom: 20px;">Book Service</h2>
+            <form id="reservationForm">
+                <div class="input-group">
+                    <label>Your Email (auto-filled)</label>
+                    <input type="email" id="userEmail" readonly
+                        style="background: #f5f5f5; cursor: not-allowed;">
+                </div>
+
+                <!-- Sub-Service Dropdown (populated dynamically) -->
+                <div class="input-group">
+                    <label>Choose Treatment</label>
+                    <select id="subServiceSelect" required onchange="onSubServiceChange()">
+                        <option value="">— Choose a treatment —</option>
+                    </select>
+                </div>
+
+                <!-- Dynamic Price Display -->
+                <div id="selectedPrice" class="price-display" style="display: none;"></div>
+
+                <div class="input-group">
+                    <label>Select Date</label>
+                    <input type="date" id="bookingDate" required>
+                </div>
+
+                <div class="input-group">
+                    <label>Available Times</label>
+                    <select id="bookingTime" required>
+                        <option value="">Choose a time slot</option>
+                        <option value="09:00">09:00 AM</option>
+                        <option value="10:00">10:00 AM</option>
+                        <option value="11:00">11:00 AM</option>
+                        <option value="13:00">01:00 PM</option>
+                        <option value="14:00">02:00 PM</option>
+                        <option value="15:00">03:00 PM</option>
+                        <option value="16:00">04:00 PM</option>
+                        <option value="17:00">05:00 PM</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="submit-btn">Confirm Reservation</button>
+            </form>
+        </div>
+    </div>
+
+   <script src="main.js"></script>
+</body>
+
+</html>

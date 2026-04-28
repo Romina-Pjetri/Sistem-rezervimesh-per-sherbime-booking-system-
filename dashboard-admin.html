@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel | Glow & Relax</title>
+    <meta name="description" content="Admin control panel for Glow & Relax — manage services, pricing, and reservations.">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="admin-body">
+
+    <!-- Admin Route Protection -->
+    <script>
+        (function () {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (!currentUser || currentUser.email !== 'meginako2@gmail.com') {
+                window.location.href = 'index.html';
+            }
+        })();
+    </script>
+
+    <div class="admin-container">
+        <aside class="sidebar">
+            <div class="logo">Admin Panel</div>
+            <ul class="sidebar-links">
+                <li id="link-res" class="active"><a href="#" onclick="showSection('reservations')">📅 Reservations</a></li>
+                <li id="link-serv"><a href="#" onclick="showSection('services-manage')">🛠️ Manage Services</a></li>
+                <li><a href="#" onclick="logout()" class="logout-link">🚪 Logout</a></li>
+            </ul>
+        </aside>
+
+        <main class="admin-main">
+            <!-- Reservations Section -->
+            <section id="reservations-section">
+                <header class="admin-header">
+                    <h2>📅 Appointments</h2>
+                </header>
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Customer</th>
+                                <th>Service / Treatment</th>
+                                <th>Date & Time</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="adminTableBody"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- Services Management Section -->
+            <section id="services-section" style="display: none;">
+                <header class="admin-header">
+                    <h2>🛠️ Manage Services</h2>
+                    <button class="add-btn" onclick="openServiceModal()">+ Add New Category</button>
+                </header>
+                <div class="services-admin-grid" id="adminServicesGrid"></div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Admin Modal (Add/Edit Category with Sub-Services & Edit Reservation) -->
+    <div id="adminModal" class="modal">
+        <div class="modal-content modal-wide">
+            <span class="close" onclick="closeAdminModal()">&times;</span>
+            <h2 id="adminModalTitle" style="font-family: var(--font-heading); margin-bottom: 20px;">Edit</h2>
+            <form id="adminForm">
+                <div id="modalInputs">
+                </div>
+                <button type="submit" class="submit-btn" style="margin-top: 20px;">Save Changes</button>
+            </form>
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+
+</html>

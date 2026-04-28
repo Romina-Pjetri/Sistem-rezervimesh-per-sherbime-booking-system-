@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glow & Relax | Premium Wellness & Beauty</title>
+    <meta name="description"
+        content="Glow & Relax — a premium wellness center offering holistic beauty services, spa treatments, and professional care. Book your transformation today.">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Login Required Modal -->
+    <div id="loginRequiredModal" class="modal">
+        <div class="modal-content" style="text-align: center;">
+            <span class="close" onclick="closeLoginModal()">&times;</span>
+            <div class="modal-icon">🔐</div>
+            <h2 id="loginModalTitle" style="font-family: var(--font-heading); margin-bottom: 8px;">Login Required</h2>
+            <p id="loginModalMessage" style="margin: 16px 0 24px; color: #777; line-height: 1.6;">To book an appointment and see
+                availability, please login to your account first.</p>
+            <button onclick="window.location.href='login.html'" class="submit-btn">Go to Login</button>
+        </div>
+    </div>
+
+    <!-- Navbar -->
+    <nav class="navbar" id="mainNav">
+        <div class="logo">Glow & Relax</div>
+        <ul class="nav-links">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#services">Book Now</a></li>
+            <li><a href="produkte.html">Products</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="login.html" class="login-btn">Login</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1>Premium Wellness & Beauty</h1>
+        <p>Book your next transformation in just a few clicks.</p>
+    </header>
+
+     <!-- Who We Are / About Section -->
+    <section id="about" class="about-section">
+        <div class="about-container">
+            <div class="about-text">
+                <h2 class="section-title about-title">About Us</h2>
+                <p class="about-lead">At <strong>Glow & Relax</strong>, we believe beauty is more than skin deep. It's a
+                    feeling — a state of balance, confidence, and inner calm.</p>
+                <p class="about-body">Founded with a passion for holistic wellness, our premium sanctuary brings together
+                    expert stylists, licensed therapists, and top-of-the-line products to deliver a truly transformative
+                    experience. From revitalizing hair treatments to soothing deep-tissue massages, every detail is
+                    crafted to help you look and feel your absolute best.</p>
+                <div class="about-highlights">
+                    <div class="highlight-item">
+                        <img src="images/prod.png" class="highlight-img">
+                        <div>
+                            <strong>Premium Products</strong>
+                            <p>"From the moment we opened, we made a promise — to never compromise on quality.
+                                 Every product on our shelves has been carefully reviewed, tested, and approved
+                                  by our team. We work only with brands that share our values: clean ingredients, 
+                                  ethical sourcing, and real results. Because we believe your skin deserves the 
+                                  very best."</p>
+                        </div>
+                    </div>
+                    <div class="about-highlights">
+
+  <div class="highlight-item">
+    <img src="images/Products.png" class="highlight-img">
+    
+    <div>
+      <strong>Luxury Products</strong>
+      <p>"Our collection is not built overnight. We spend months researching formulas, reading studies, 
+        and testing products on ourselves before they ever reach you. 
+        Only the ones that truly deliver make the cut. High-end doesn't just mean expensive — 
+        it means effective, safe, and worth every penny."</p>
+    </div>
+  </div>
+
+  <div class="highlight-item">
+    <img src="images/team.png" class="highlight-img">
+    <div>
+      <strong>Expert Team</strong>
+      <p>"Behind every recommendation is a team of certified beauty and wellness specialists 
+        with years of hands-on experience. We stay up to date with the latest skincare science
+         so we can guide you with confidence. When you walk in, you're not just a customer — 
+        you're someone we genuinely want to help feel their best."</p>
+    </div>
+  </div>
+
+  <div class="highlight-item">
+    <img src="images/care.png" class="highlight-img">
+    <div>
+      <strong>Holistic Care</strong>
+      <p>"True wellness isn't just about what you put on your skin — it's about how 
+        you feel inside and out. Our approach looks at the full picture: your lifestyle, your stress, your routines. 
+        We combine professional skincare with wellness practices to give you
+         results that go deeper than the surface."</p>
+    </div>
+  </div>
+
+</div>
+     <!-- CAROUSEL SECTION -->
+<div class="carousel-section">
+  <h2 class="carousel-title">Our Services</h2>
+  <p class="carousel-subtitle">Discover what we offer</p>
+
+  <div class="carousel-wrapper">
+    <button class="carousel-btn prev" onclick="moveCarousel(-1)">&#8592;</button>
+
+    <div class="carousel-track-container">
+      <div class="carousel-track" id="carouselTrack">
+
+        <div class="carousel-card">
+          <img src="images/facial.png" alt="Facial">
+          <div class="carousel-overlay">
+            <h3>Facial Treatments</h3>
+            <p>Deeply cleansing facials tailored to your skin type.</p>
+          </div>
+        </div>
+
+        <div class="carousel-card">
+          <img src="images/spa.png" alt="Massage">
+          <div class="carousel-overlay">
+            <h3>Relaxing Massage</h3>
+            <p>Full body massage to melt away stress and tension.</p>
+          </div>
+        </div>
+
+        <div class="carousel-card">
+          <img src="images/scrub.png" alt="Skincare">
+          <div class="carousel-overlay">
+            <h3>Skincare Rituals</h3>
+            <p>Premium routines for glowing, healthy skin.</p>
+          </div>
+        </div>
+
+        <div class="carousel-card">
+          <img src="images/aromatherapy.png" alt="Body">
+          <div class="carousel-overlay">
+            <h3>Body Treatments</h3>
+            <p>Scrubs, wraps and therapies for total body renewal.</p>
+          </div>
+        </div>
+
+        <div class="carousel-card">
+          <img src="images/nail.png" alt="Nails">
+          <div class="carousel-overlay">
+            <h3>Nail Care</h3>
+            <p>Manicure & pedicure with luxury products.</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <button class="carousel-btn next" onclick="moveCarousel(1)">&#8594;</button>
+  </div>
+</div>
+
+    <!-- Services & Pricing Section -->
+    <section id="book_now" class="services-container">
+        <h2 class="section-title">Book Now</h2>
+        <p class="section-subtitle">Premium treatments crafted for your well-being</p>
+        <div class="services-grid" id="homeServicesGrid">
+            <!-- Dynamically rendered by main.js -->
+        </div>
+    </section>
+
+    
+
+    <!-- Photo Gallery Section -->
+    <section id="gallery" class="gallery-section">
+        <h2 class="section-title">Gallery</h2>
+        <p class="section-subtitle">A glimpse into our sanctuary of relaxation</p>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="../images/gallery-1.png" alt="Spa stones and candles">
+                <div class="gallery-overlay">
+                    <p>Relaxation Space</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="../images/gallery-2.png" alt="Facial treatment">
+                <div class="gallery-overlay">
+                    <p>Facial Treatments</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="../images/gallery-3.png" alt="Nail art service">
+                <div class="gallery-overlay">
+                    <p>Nail Art Studio</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="../images/gallery-4.png" alt="Hair styling">
+                <div class="gallery-overlay">
+                    <p>Hair Styling</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="../images/gallery-5.png" alt="Massage room">
+                <div class="gallery-overlay">
+                    <p>Massage Rooms</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="../images/gallery-6.png" alt="Spa products">
+                <div class="gallery-overlay">
+                    <p>Premium Products</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="logo">Glow & Relax</div>
+        <p>&copy; 2026 Glow & Relax. All rights reserved.</p>
+        <ul class="footer-links">
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#book_now">Book Now</a></li>
+            <li><a href="#gallery">Gallery</a></li>
+            <li><a href="login.html">Login</a></li>
+        </ul>
+    </footer>
+
+    <script src="main.js"></script>
+</body>
+
+</html>
